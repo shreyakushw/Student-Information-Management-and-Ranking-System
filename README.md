@@ -26,10 +26,12 @@ The Student Information Management and Ranking System is an SAP ABAP module pool
 2. *Create the Database Table:*
    - Open the SAP GUI and go to transaction SE11.
    - Create a table named ZSTU20_TABLE1 with the following fields:
-     - ZSTU20_ID1 (Student ID)
-     - ZSTU20_NAME1 (Student Name)
-     - ZSTU20_EMAIL1 (Student Email)
-     - ZSTU20_GPA (GPA of the Student)
+     - ROLLNO (Student ID)
+     - FIRSTNAME (Student Name)
+     - LASTNAME
+     - DOB (Student DOB)
+     - ADDRESS (address of the Student)
+     - MARKS 
    - Activate the table.
 
 3. *Create the Program and Includes:*
