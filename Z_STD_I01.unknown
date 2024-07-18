@@ -1,0 +1,25 @@
+*&---------------------------------------------------------------------*
+*&  Include           Z_STD_I01
+*&---------------------------------------------------------------------*
+
+MODULE USER_COMMAND_0100 INPUT.
+  CASE sy-ucomm.
+    WHEN 'SAVE'.
+       PERFORM save_data.
+    WHEN 'RSLT'.
+      PERFORM fetch_data.
+*      SELECT * FROM ZSTD_TABLE INTO TABLE IT_TABLE.
+      CALL SCREEN '200'.
+    WHEN 'EXIT'.
+      LEAVE PROGRAM.
+    WHEN OTHERS.
+      MESSAGE 'Unknown command' TYPE 'E'.
+  ENDCASE.
+ENDMODULE.
+
+MODULE USER_COMMAND_0200 INPUT.
+  CASE sy-ucomm.
+    WHEN 'BACK'.
+      CALL SCREEN '100'.
+  ENDCASE.
+ENDMODULE.

@@ -1,0 +1,41 @@
+*&---------------------------------------------------------------------*
+*& Module Pool       Z_STUDENT_DETAILS
+*&
+*&---------------------------------------------------------------------*
+*&
+*&
+*&---------------------------------------------------------------------*
+
+
+INCLUDE Z_STD_TOP                               .    " global Data
+                              .  " FORM-Routines
+INCLUDE z_student_details_status_01o01.
+INCLUDE z_student_details_status_02o01.
+
+INCLUDE z_student_details_user_commi01.
+INCLUDE z_student_details_user_commi02.
+
+INCLUDE z_student_details_save_dataf01.
+INCLUDE z_student_details_fetch_datf01.
+
+
+
+
+
+**&SPWIZARD: DECLARATION OF TABLECONTROL 'ZSTD_CONTROL' ITSELF
+*CONTROLS: ZSTD_CONTROL TYPE TABLEVIEW USING SCREEN 0200.
+*
+**&SPWIZARD: OUTPUT MODULE FOR TC 'ZSTD_CONTROL'. DO NOT CHANGE THIS LINE
+**&SPWIZARD: UPDATE LINES FOR EQUIVALENT SCROLLBAR
+*MODULE ZSTD_CONTROL_CHANGE_TC_ATTR OUTPUT.
+*  DESCRIBE TABLE IT_TABLE LINES ZSTD_CONTROL-lines.
+*ENDMODULE.
+
+*&SPWIZARD: DECLARATION OF TABLECONTROL 'STD_TABLE_CNTRL' ITSELF
+CONTROLS: STD_TABLE_CNTRL TYPE TABLEVIEW USING SCREEN 0200.
+
+*&SPWIZARD: OUTPUT MODULE FOR TC 'STD_TABLE_CNTRL'. DO NOT CHANGE THIS L
+*&SPWIZARD: UPDATE LINES FOR EQUIVALENT SCROLLBAR
+MODULE STD_TABLE_CNTRL_CHANGE_TC_ATTR OUTPUT.
+  DESCRIBE TABLE IT_TABLE LINES STD_TABLE_CNTRL-lines.
+ENDMODULE.

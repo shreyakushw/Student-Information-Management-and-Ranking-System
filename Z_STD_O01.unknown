@@ -1,0 +1,13 @@
+*&---------------------------------------------------------------------*
+*&  Include           Z_STD_O01
+*&---------------------------------------------------------------------*
+
+MODULE STATUS_0100 OUTPUT.
+  SET PF-STATUS 'STATUS_100'.
+  SET TITLEBAR 'INPUT_100'.
+ENDMODULE.
+
+MODULE STATUS_0200 OUTPUT.
+  SET PF-STATUS 'STATUS_200'.
+  SET TITLEBAR 'OUTPUT_200'.
+ENDMODULE.

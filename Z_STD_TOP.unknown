@@ -1,0 +1,31 @@
+*&---------------------------------------------------------------------*
+*& Include Z_STD_TOP                                         Module Pool      Z_STUDENT_DETAILS
+*&
+*&---------------------------------------------------------------------*
+PROGRAM Z_STUDENT_DETAILS.
+
+TABLES: ZSTD_TABLE.
+
+DATA: rollno TYPE ZSTD_TABLE-ROLLNO,
+      firstname TYPE ZSTD_TABLE-FIRSTNAME,
+      lastname TYPE ZSTD_TABLE-LASTNAME,
+      gender TYPE ZSTD_TABLE-GENDER,
+      dob TYPE ZSTD_TABLE-DOB,
+      address TYPE ZSTD_TABLE-ADDRESS,
+      marks TYPE ZSTD_TABLE-MARKS.
+
+TYPES: BEGIN OF STD_TABLE,
+        ROLLNO TYPE ZSTD_TABLE-ROLLNO,
+        FIRSTNAME TYPE ZSTD_TABLE-FIRSTNAME,
+        LASTNAME TYPE ZSTD_TABLE-LASTNAME,
+        GENDER TYPE ZSTD_TABLE-GENDER,
+        DOB TYPE ZSTD_TABLE-DOB,
+        ADDRESS TYPE ZSTD_TABLE-ADDRESS,
+        MARKS TYPE ZSTD_TABLE-MARKS,
+        RANK TYPE I,
+      END OF STD_TABLE.
+
+DATA: IT_TABLE TYPE TABLE OF STD_TABLE,
+      WA_TABLE TYPE STD_TABLE.
+
+" Define a new structure to include the rank field

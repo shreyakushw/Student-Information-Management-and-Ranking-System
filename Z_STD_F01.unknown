@@ -1,0 +1,54 @@
+*&---------------------------------------------------------------------*
+*&  Include           Z_STD_F01
+*&---------------------------------------------------------------------*
+
+FORM SAVE_DATA .
+  WA_TABLE-ROLLNO = rollno.
+  WA_TABLE-FIRSTNAME = firstname.
+  WA_TABLE-LASTNAME = lastname.
+  WA_TABLE-DOB = dob.
+  WA_TABLE-GENDER = gender.
+  WA_TABLE-ADDRESS = address.
+  WA_TABLE-MARKS = marks.
+
+  " Convert to the structure compatible with the database
+  DATA: ig_table TYPE TABLE OF zstd_table,
+        wg_table TYPE zstd_table.
+
+  MOVE-CORRESPONDING WA_TABLE TO wg_table.
+
+  APPEND wg_table TO ig_table.
+  INSERT zstd_table FROM TABLE ig_table.
+  APPEND WA_TABLE TO IT_TABLE.
+
+
+
+  IF sy-subrc = 0.
+    MESSAGE 'Data saved successfully' TYPE 'I'.
+  ELSE.
+    MESSAGE 'Error saving data' TYPE 'E'.
+  ENDIF.
+ENDFORM.
+
+FORM FETCH_DATA .
+  CLEAR: IT_TABLE.
+  SELECT ROLLNO FIRSTNAME LASTNAME GENDER DOB ADDRESS MARKS FROM ZSTD_TABLE INTO TABLE IT_TABLE.
+
+  SORT IT_TABLE BY MARKS DESCENDING.
+
+  DATA(st_rank) = 1.
+  LOOP AT IT_TABLE INTO WA_TABLE.
+    WA_TABLE-RANK = st_rank.
+    st_rank = st_rank + 1.
+    MODIFY IT_TABLE FROM WA_TABLE.
+  ENDLOOP.
+*  DATA: is_table TYPE TABLE OF zstd_table,
+*        ws_table TYPE zstd_table.
+*
+*  MOVE-CORRESPONDING WA_TABLE TO ws_table.
+*
+*  APPEND ws_table TO is_table.
+**  INSERT zstd_table FROM TABLE is_table.
+*  APPEND WA_TABLE TO IT_TABLE.
+*  SELECT * FROM ZSTD_TABLE INTO TABLE IS_TABLE.
+ENDFORM.
